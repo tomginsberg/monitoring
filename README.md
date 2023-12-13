@@ -10,5 +10,5 @@ streamlit.
 
 ```shell
 pip install -r requirements.txt
-PYTHONPATH=. streamlit run geminaid/app.py
+PYTHONPATH=. streamlit run app/geminaid.py
 ```
