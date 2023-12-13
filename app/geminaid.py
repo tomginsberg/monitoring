@@ -51,7 +51,7 @@ mask = meta.date < pd.to_datetime("2022-01-01")
 x_test_pre, y_test_pre, meta_pre = x_test[mask], y_test[mask], meta[mask]
 x_test, y_test, meta = x_test[~mask], y_test[~mask], meta[~mask]
 
-data_tab, eval_tab, shift_tab = st.tabs(["Data", "Historical Evaluation", "Realtime Monitoring"])
+data_tab, eval_tab, shift_tab = st.tabs(["Data Explorer", "Historical Evaluation", "Realtime Monitoring"])
 
 
 # ----------------------------------
@@ -163,7 +163,9 @@ with data_tab:
 
         fig = go.Figure()
         for col in x_test.columns:
-            fig.add_trace(go.Histogram(x=x_test[col], name=col))
+            fig.add_trace(
+                go.Violin(x=data['od_test']['data'][col], name=f'{col} (current)'))  # , histnorm='probability'))
+            fig.add_trace(go.Violin(x=data['train']['data'][col], name=f'{col} (train)'))  # , histnorm='probability'))
         fig.update_layout(
             xaxis_title='Value',
             yaxis_title='Count',
@@ -305,7 +307,8 @@ with shift_tab:
              " confidence on unlabeled data."
              " The true performance is estimated using the most recently available labeled data"
              " that the model has not been trained on. For more details see the paper "
-             " [Leveraging Unlabeled Data to Predict Out-of-Distribution Performance](https://arxiv.org/abs/2201.04234)")
+             " [Leveraging Unlabeled Data to Predict "
+             "Out-of-Distribution Performance](https://arxiv.org/abs/2201.04234).")
 
     st.plotly_chart(fig)
 
