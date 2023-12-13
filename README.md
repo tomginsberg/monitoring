@@ -1,4 +1,5 @@
-# Geminaid realtime model monitoring dashboard
+![](app/logo-light.png)
+Geminaid realtime model monitoring dashboard
 
 ![](app/screenshot.png)
 
