@@ -1,6 +1,6 @@
 # Geminaid realtime model monitoring dashboard
 
-![](app/Screenshot 2023-12-13 at 10.40.01 AM.png)
+![](app/screenshot.png)
 
 ## Running the app
 
