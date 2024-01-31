@@ -85,7 +85,7 @@ def process_dataset(
         raise ValueError(f'Label {label} not found in dataset or in Tasks')
     if isinstance(training_criteria, tuple) or isinstance(training_criteria, list):
         training_criteria, kwargs = training_criteria
-        id_data = Criteria.__dict__[training_criteria](dataset, **kwargs)
+        id_data = Criteria.__dict__[training_criteria].__func__(dataset, **kwargs)
     else:
         id_data = Criteria.__dict__[training_criteria](dataset)
 
