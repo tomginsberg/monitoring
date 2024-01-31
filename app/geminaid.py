@@ -1,4 +1,12 @@
 import os
+import sys
+# Get the absolute path of the project root
+project_root = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
+
+# Append the project root to the Python path
+if project_root not in sys.path:
+    sys.path.append(project_root)
+
 import pickle
 from glob import glob
 
