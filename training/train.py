@@ -1,6 +1,6 @@
 from datetime import datetime
 from time import time
-from typing import Any
+from typing import Any, Union
 
 import pickle
 import joblib
@@ -41,7 +41,7 @@ class Criteria:
         return x['date'] >= datetime(2020, 3, 1)
 
 
-def get_criteria_set(data: pd.DataFrame, criteria: str | tuple[str, dict[str, Any]]) -> pd.DataFrame:
+def get_criteria_set(data: pd.DataFrame, criteria: Union[str,  tuple[str, dict[str, Any]]]) -> pd.DataFrame:
     if isinstance(criteria, tuple):
         criteria, kwargs = criteria
         return Criteria.__dict__[criteria](data, **kwargs)
@@ -135,7 +135,7 @@ class Trainer:
     def __init__(
             self,
             dataset: pd.DataFrame,
-            training_criteria: str | tuple[str, dict[str, Any]],
+            training_criteria: Union[str,  tuple[str, dict[str, Any]]],
             input_features: list[str],
             label: str,
             params: dict = XGB_PARAMS,
