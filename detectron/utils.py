@@ -2,11 +2,11 @@ import numpy as np
 import pandas as pd
 import xgboost
 from sklearn.metrics import roc_auc_score, accuracy_score
-
+from typing import Union
 
 class DetectronDataModule:
 
-    def __init__(self, train_data: np.ndarray | pd.DataFrame,
+    def __init__(self, train_data: Union[np.ndarray, pd.DataFrame],
                  q_data, train_labels, q_pseudo_labels,
                  balance_train_classes=True,
                  test_weight_multiplier=1.0):
